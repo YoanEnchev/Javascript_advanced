@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Extract Parenthesis</title>
+    <script src="06_ExtractParenthesis.js"></script>
+</head>
+<body>
+    <p id="content">
+        id = content
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros ipsum, 
+        accumsan at (dolor quis), dapibus facilisis enim. Maecenas eros risus, fringilla 
+        ullamcorper tellus et, fringilla convallis lectus
+    </p>
+
+    <p id="text">
+        id = text
+        (Pellentesque) habitant morbi tristique senectus et netus et malesuada fames ac 
+        (turpis egestas). Duis consectetur arcu orci, in fermentum dui hendrerit at. Mauris 
+        et molestie orci. Quisque eu euismod ipsum. Etiam porttitor hendrerit turpis eget 
+        fermentum. Sed nec ligula eu ante pretium ullamcorper.
+    </p>
+
+    <label>Search ID:</label>
+    <input type="text" id="search" />
+    <button onclick="extract()">search</button>
+    <br />
+    <br />
+
+    <label>Extractions:</label>
+    <br />
+    <textarea id="result">Extracted words will appear here</textarea>
+</body>
+</html>
