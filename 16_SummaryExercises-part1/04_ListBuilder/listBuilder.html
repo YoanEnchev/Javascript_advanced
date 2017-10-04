@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>List Items: Up / Down</title>
+    <style>
+        button {
+            margin: 3px 0 3px 8px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        function listBuilder(selector) {
+            function escaping(text) {
+                let forbidden = ["&", "<", ">", '"'];
+                let allowed = ["&amp;", "&lt;", "&gt;", "&quot;"];
+
+                for (let i = 0; i < forbidden.length; i++) {
+                    text = text.split(forbidden[i]).join(allowed[i]);
+                }
+
+                return text;
+            }
+
+            function createNewList() {
+                $(selector).empty();
+                $(selector).html('<ul>');
+            }
+
+            function addItem(text) {
+                text = escaping(text);
+                $(selector + ' ul').append($(`<li>${text + ''}</li>`)
+                    .append($('<button>Up</button>').click(moveUp))
+                    .append($('<button>Down</button>').click(moveDown)));
+            }
+
+            function moveUp() {
+                let before = $(this).parent().prev();
+                $(this).parent().insertBefore(before);
+            }
+
+            function moveDown() {
+                let after = $(this).parent().next();
+                $(this).parent().insertAfter(after);
+            }
+
+            return {
+                createNewList, addItem
+            }
+        }
+    </script>
+    <script>
+        $(function () {
+            let builder = listBuilder("#main");
+            builder.createNewList();
+            builder.addItem("Sofia");
+            builder.addItem("Varna");
+            builder.addItem("Sofia <new>");
+            builder.addItem("Pleven");
+        });
+    </script>
+</body>
+</html>
